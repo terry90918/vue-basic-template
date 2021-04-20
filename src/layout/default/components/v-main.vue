@@ -1,11 +1,11 @@
 <template>
-  <div id="app">
+  <section class="v-main">
     <router-view />
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'VMain',
 }
 </script>

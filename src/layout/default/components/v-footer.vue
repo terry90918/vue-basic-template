@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
-    <router-view />
-  </div>
+  <footer class="v-footer">footer</footer>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'VFooter',
 }
 </script>
