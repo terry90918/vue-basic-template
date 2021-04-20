@@ -1,7 +1,8 @@
 import axios from 'axios'
-import { ElMessageBox, ElMessage } from 'element-plus'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
+
+import { ElMessageBox, ElMessage } from 'element-plus'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -25,13 +26,13 @@ service.interceptors.response.use(
   (response) => {
     const res = response.data
 
-    if (res.code !== 20000) {
-      ElMessage({
-        message: res.message || 'Error',
-        type: 'error',
-        duration: 5 * 1000,
-      })
+    ElMessage({
+      message: res.message || 'Error',
+      type: 'error',
+      duration: 5 * 1000,
+    })
 
+    if (res.code !== 20000) {
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // to re-login
